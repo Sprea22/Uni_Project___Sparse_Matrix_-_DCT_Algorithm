@@ -1,0 +1,67 @@
+Slide 2
+---------
+LEGGI SLIDE
+
+
+Slide 3
+---------
+La prima parte di questa parte consiste nell'implementazione della DCT2. Procederemo con una breve introduzione teoriche dopo di che spiegheremo appunto come è stata implementata.
+
+Slide 4
+---------
+LEGGI SLIDE (Teoria sintetica)
+
+Slide 5
+---------
+LEGGI SLIDE
+
+Slide 6
+---------
+La nostra implementazione della DCT2 presenta delle prestazioni nettamente peggiori rispetto a quelle implementate dalla libreria di Python Scipy.fftpack.
+Questa differenza aumenta all'aumentare della dimensione delle matrici, e quindi porta a credere che la differenza stia nella complessità computazionale teorica.
+
+Slide 7
+---------
+LEGGI SLIDE
+
+Slide 8
+---------
+LEGGI SLIDE
+
+Slide 9
+---------
+LEGGI SLIDE
+
+Slide 10
+---------
+La seconda parte del progetto riguarda la manipolazione di immagini digitali attraverso la modifica delle frequenze che la compongono. Ancora una volta andremo ad effettuare una breve introduzione teorica e poi presenteremo il software implementato dando anche la possibilità di provarlo.
+
+Slide 11
+---------
+LEGGI SLIDE
+
+Slide 12
+---------
+LEGGI SLIDE
+
+Slide 13
+---------
+Quella presentata in figura è uno screen dell'interfaccia grafica legata al software da noi implementato.E' possibile selezionare un'immagine da una qualunque posizione nel file system e inserire i parametri (d e beta). Scelta l'immagine e i valore dei parametri, grazie al tasto "CONVERT" verrà mostrata l'immagine elaborata affiancata a quella originale. Il software permette inoltre di salvare l'immagine elaborata.
+Nelle tre slide successive, saranno presentati e spiegati alcuni esempi di applicazione di questo software su immagini bmp in scala di grigi.
+
+CHIDERE SE VOGLIONO LA DEMO ORA O DOPO
+
+Slide 14
+---------
+Il primo esempio mostra uno smoothing. ("""Per smoothing si intede la rimozione dei dettagli da un'immagine, portando tutto ad un valore medio"""") Avendo come parametro beta = 0, le frequenze sotto la diagonale d sono completamente annullate, andando quindi (per costruzione della DCT2) a tagliare le alte frequenze. L'immagine risultante infatti è di un colore tendente a quello medio in ogni regione e si sono persi quasi completamente i dettagli (scritte, bordi etc).
+Inoltre è stato introdotto un artefatto tipico della compressione con DCT (se non si utilizza la strategia di blocchettizzazione di JPEG ma si applica la trasfomrata all'intera immagine, come in JPEG2000) ovvero il ringing artifact (--> vedi wiki).
+
+Slide 15
+---------
+Questo secondo esempio, invece, rappresente il caso contrario dello smoothing, lo sharpening. ("""Per smoothing si intede l'evidenziazione dei dettagli presenti in un'immagine""""). In questo caso beta è un fattore moltiplicativo > 1 e questo va ad aumentare il contributo delle alte frequenze nell'immagine. Possiamo notare infatti che al contrario di prima, risaltano tutti i dettagli (in particolare le scritte). Anche in questo caso, è presente ancora più di prima, il ringing artifact.
+
+
+Slide 16
+---------
+In questa ultima slide d'esempio si può vedere la stessa immagine con diverse configurazioni di parametri. Come si può notare con beta = 1, l'immagine resta invariata (indipendentemente da d). Con beta > 1 l'immagine tende a divetare più luminosa nelle zone selezionate da d (d = 0 tutto è più chiaro, d = 200 solo nei dettagli (alte frequenze), d = 512 praticamente invariata, le frequenze modificate sono quelle meno significative); stesso discorso al contrario con b < 1.
+In generale l'effetto visivo è inversamente proporzionale a d, infatti più d è grande, meno frequenze saranno coinvolte nella modifica (d = 0 le modifico tutte, d = 512 solo quelle meno significative) 

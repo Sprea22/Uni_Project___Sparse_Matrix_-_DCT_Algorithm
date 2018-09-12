@@ -1,0 +1,92 @@
+Slide2:
+--------
+All'avanzare della tecnologia i problemi da risolvere sono diventati e sasempre più complicati, proprio per questo motivo è indispensabile una scelta accurata dello strumento da utilizzare. 
+
+Una scelta fondamentale è quella di affidarsi a SW open source o SW proprietari: la differenza principale tra queste due categorie è che per utilizzare un SW proprietario devi essere disposto a pagare per utilizzarlo, mentre quello open source no. Quindi la vera domanda è: vale la pena pagare per un servizio? Se si, quando? La risposta a questa domande è DIPENDE. 
+
+Lo scopo di questo progetto è quello appunto di confrontare le prestazioni di SW open source e quello proprietario in uno specifico ambito, ovvero la risoluzione di sistemi lineari per matrici sparse, col fine di capire se e quando vale la pena utilizzare un SW proprietario oppure no.
+
+Faremo ora una breve introduzione teorica sugli argomenti che andremo a trattare. 
+
+Slide3:
+--------
+LEGGERE SLIDE, leggere degli esempi di applicazione di sistemi lineari in ambito informatico.
+
+Slide4:
+--------
+LEGGERE SLIDE
+
+Slide5:
+--------
+LEGGERE SLIDE
+
+Slide6:
+--------
+In particolare, abbiamo scelto di utilizzare delle matrici sparse ottenute da SuiteSparseMatrixCollection, che è un sito che a mette disposizione matrici sparse derivanti da problemi reali in svariati ambiti. 
+
+Slide7:
+--------
+Dopo aver scelto le matrici da analizzare, siamo passati ad un prima fase di analisi di Matlab stesso, con lo scopo di capire i fattori principali alla scelta di un software sostitutivo.
+
+Slide8:
+--------
+Come prima cosa abbiamo reputato indispensabile analizzare il funzionameno e la struttura di Matlab per poi essere in grado di compararlo con altri SW.
+Matlab è un ambiente di sviluppo per lavori in ambito scientifico. Nel nostro caso specifico, Matlab impementa per la risoluzione di sistemi lineare per matrici sparse la funzione "mldivide", che sceglie il miglior risolutore in base alla matrice in input, in particolare:
+- LU per matrici NON definite positive
+- Cholesky per matrici definite positive
+
+LEGGERE SLIDE (concetti fondamentali)	
+
+Slide9:
+--------
+Una volta analizzato il SW Matlab, abbiamo dedotto che la soluzione migliore era trovare una soluzione Matlab-Like, ovvero un ambiente integrato che avesse due abilità in particolare:
+- Abilità nel riconsocere le proprietà di una matrice in modo da applicare strategie risolutive diverse.
+- Abilità nell'utilizzare almeno le stesse strategie risolutive utilizzate da Matlab.
+Alcuni dei software che erano stati inizialmente considerati sono stati scartati proprio per questo motivo, come ad esempio la libreria Scipy di Python e R. (Utilizzano solo fattorizzazione LU)
+Tra le restanti possibili alternative open source, la migliore da analizzare si è rilevata Octave.
+
+Slide10:
+--------
+LEGGERE SLIDE (concetti fondamentali) 
+Notare che "mldivide" di Octave utilizza si le stesse librerie e risolutori della funzione "mldivide" di Matlab, PERò SOLO per i casi da noi testati.
+
+Slide11:
+--------
+LEGGERE SLIDE
+
+Slide12-13-14-15-16:
+--------
+LEGGERE SLIDE INTRODUTTIVA (12)
+- Octave non computa la matrice PR02R, ovvero non termina per problemi di memoria
+- Ubuntu, in confronto a Windows, è leggermente meglio in tutti e tre i parametri per entrambi i SW
+
+Slide17:
+--------
+Passando ora ai grafici comparativi delle dimensioni di qualità considerate sui SW e sistemi operativi in questione, si può notare che:
+Per quanto riguarda il tempo di esecuzione del risolutore si può notare come Matlab presenta un netto miglioramento rispetto al software di Octave in praticamente tutte le matrici considerate e, al contrario di Octave, permette di risolvere la matrice PR02R.
+
+Slide18:
+--------
+L'utilizzo della memoria non presenta differenze significative per quanto riguarda il software. Per quanto riguarda i sistemi operativi, generalmente Ubuntu gestisce la memoria in maniera leggermente migliore per matrici di grandi dimensioni, mentre Windows per matrici di dimensioni ridotte.
+
+Slide19:
+--------
+Per quanto riguarda l'errore relativo, il risultato più significativo rigaurda l'errore di Matlab: non solo è più basso, ma risulta esattamente identico sia su Ubuntu che su Windows.
+
+Slide20:
+--------
+I due software non sono solo stati analizzati da un punto di vista delle performance, ma siamo andati a considerare altri fattori che sicuramente devono essere presi in considerazione se si vuole prendere una scelta consapevole.
+Come possiamo vedere dalla tabella abbiamo consultato la documentazione ufficiale dei due software e cercato online tutorial ed esempi ed è risultato che, nonostante entrambi siano abbastanza ben documentati, la strutture della documentazione di octave è molto meno intuitiva di quella di Matlab, e tutorial ed esempi (seppur presenti) risultano a volte semplicistici e non troppo numerosi. 
+
+Slide21:
+--------
+In questa slide è riassunta la valutazione complessiva delle performance e LEGGI SLIDE + spiega classifica e colori
+
+Slide22:
+--------
+LEGGI SLIDE
+
+
+Slide23:
+--------
+Abbiamo sintetizzato gli step logici per una scelta consapevole in questo diagramma + LEGGI DIAGRAMMA
